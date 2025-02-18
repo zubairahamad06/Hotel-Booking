@@ -5,27 +5,39 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./booking.css">
         <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+            href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
         <title>Hotel Booking</title>
     </head>
     <body>
+
+
+        <nav>
+            <ul>
+                <li class="logo"><span>G</span>aza <span>G</span>rand</li>
+                <li class="header">Booking Form</li>
+            </ul>
+        </nav>
         <div class="booking">
             <div id="left" class="left">
-                <h1>HOTEL</h1>
+                <h1>Gaza Grand</h1>
 
                 <form id="form" class="form">
                     <div>
                         <span>Full Name:</span>
-                        <input type="text" placeholder="Enter your name" id="fullname" required>
+                        <input type="text" placeholder="Enter your name"
+                            id="fullname" required>
                     </div>
                     <div>
                         <span>Phone Number:</span>
-                        <input type="number" placeholder="Enter your Phone Number" id="phonenumber" required>
+                        <input type="number"
+                            placeholder="Enter your Phone Number"
+                            id="phonenumber" required>
                     </div>
                     <div>
                         <span>E-mail:</span>
-                        <input type="email" placeholder="Enter your email" id="email" required>
-                       
+                        <input type="email" placeholder="Enter your email"
+                            id="email" required>
+
                     </div>
 
                     <div class="date">
@@ -41,24 +53,36 @@
 
                     <div>
                         <span>Number Of Rooms:</span>
-                        <input type="number" autocomplete="off" placeholder="Enter Number Of Rooms" id="rooms" required>
-                       
+                        <input type="number" autocomplete="off"
+                            placeholder="Enter Number Of Rooms" id="rooms"
+                            required>
+
                     </div>
 
-                    <button type="submit" id="button" class="sbm">Submit</button>
+                    <button type="submit" id="button"
+                        class="sbm">Submit</button>
                 </form>
             </div>
 
             <div id="right" class="right">
-                <img src="./luxury-architecture-exterior-design.jpg" alt="Hotel Image">
+                <img src="./luxury-architecture-exterior-design.jpg"
+                    alt="Hotel Image">
             </div>
         </div>
-        <div  class="search">
+<div class="container">
 
-            <input type="text" id="searchInput" placeholder="Search by Name, Phone, or Email">
-             <i class='bx bx-search'></i>
+        <div class="whole">
+            <div class="data">
+                <h3>Booked Datas</h3>
+            </div>
+            <div class="search">
+                <input type="text" id="searchInput"
+                    placeholder="Search by Name, Phone, or Email">
+                <i class='bx bx-search'></i>
+            </div>
         </div>
-        
+
+
         <table>
             <thead id="thead">
                 <tr>
@@ -74,6 +98,7 @@
             <tbody id="table-content">
             </tbody>
         </table>
+    </div>
 
         <script type="module" src="./booking.js"></script>
     </body>

@@ -1,8 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Fjalla+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lusitana:wght@400;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prosto+One&family=Red+Rose:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sansita+Swashed:wght@300..900&display=swap');
+
+
+
 body{
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", serif;
     margin: 0;
 }
 
+nav {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 5px 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 100px;
+    transition: color 0.3s ease-in-out;
+    white-space: nowrap;
+}
+
+nav ul li:hover {
+    color: #007bff; /* Blue hover effect */
+}
+
+.logo{
+    font-family: 'Bad Script', cursive;
+    font-size: 24px;
+    color: #004494;
+}
+.logo span{
+    font-size: 36px;
+}
+.header{
+    font-weight: 600;
+    font-size: 22px;
+}
+
+/* .header{
+margin-right: 500px;
+} */
 .booking {
     display: flex;
     height: 100vh;
@@ -18,10 +70,13 @@ body{
     align-items: center;
     background-color: #fff;
     padding: 20px;
+    margin-bottom: 80px;
 }
 
 .left h1 {
     margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 34px;
     
 }
 
@@ -57,19 +112,17 @@ input {
     display: flex;
     flex-direction: row;
     gap: 165px;
+    flex-wrap: wrap;
 }
 
 .right {
     width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ddd;
+
 }
 
 .right img {
     width: 100%;
-    height: 100vh;
+    height: 85vh;
     object-fit: cover;
 }
 .sbm{
@@ -82,6 +135,7 @@ input {
     transition: all 0.3s ease-out;
     transform: translateY(-2px);
 
+
 }
 #button:active {
     background-color: #2da4ff;
@@ -89,14 +143,34 @@ input {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.edit:hover {
+    background-color: #c82333; /* Darker green */
+}
+
+.edit:active {
+    transform: scale(0.95);
+    background-color: #c82333;
+}
+
+
+.delete:hover {
+    background-color: #c82333; /* Darker red */
+}
+
+.delete:active {
+    transform: scale(0.95);
+    background-color: #a71d2a;
+}
+.container{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
 #thead{
     display: none;
 }
-.search{
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -137,36 +211,31 @@ button {
     color: white;
 }
 
-.edit-btn {
-    background-color: #28a745;
-    color: white;
+.whole {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-top: 30px; */
+    flex-wrap: wrap; 
+    gap: 20px; 
 }
 
-.delete-btn {
-    background-color: #dc3545;
-    color: white;
+.data h3{
+    font-size: 24px;
+    font-weight: 600;
 }
-
-.edit-btn:hover {
-    background-color: #218838;
-}
-
-.delete-btn:hover {
-    background-color: #c82333;
-}
-
 .search {
     display: flex;
     align-items: center;
-    width: 100%;
     max-width: 500px;
-    margin: 20px auto;
-    padding: 10px;
+    width: 100%; 
+    padding: 10px 15px;
     border-radius: 25px;
     background: #f1f1f1;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     gap: 10px;
 }
+
 
 .search input {
     flex: 1;
@@ -175,19 +244,36 @@ button {
     background: transparent;
     padding: 8px 12px;
     font-size: 16px;
-}
-
-.search input[type="date"] {
-    max-width: 150px;
-}
-
-.search i {
-    font-size: 20px;
-    color: black;
-    cursor: pointer;
+    color: #333;
 }
 
 .search input::placeholder {
     color: #aaa;
 }
+
+
+.search i {
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.search i:hover {
+    color: #007bff; 
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .whole {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .search {
+        max-width: 90%;
+    }
+}
+
 
