@@ -24,6 +24,9 @@ const button = document.getElementById("button");
 const tablecontent = document.getElementById("table-content");
 const thead = document.querySelector("thead");
 
+let editMode = false; 
+let editId = null;
+
 button.addEventListener("click", (e) => {
   e.preventDefault(); 
 
@@ -48,10 +51,19 @@ button.addEventListener("click", (e) => {
     rooms: roomsValue,
   };
 
+  if (editMode) {
+    update(ref(db, `zubair/${editId}`), bookingData)
+      .then(() => {
+        alert("Booking updated successfully!");
+        button.innerText = "Submit"; 
+        editMode = false;
+        editId = null;
+      });
+  } else {
+    push(collectionRef, bookingData);
+  }
 
-  push(collectionRef, bookingData);
 
-  // Clear form fields after submission
   name.value = "";
   phonenumber.value = "";
   email.value = "";
@@ -60,9 +72,9 @@ button.addEventListener("click", (e) => {
   rooms.value = "";
 });
 
-// Function to fetch and display bookings
+
 onValue(collectionRef, (snapshot) => {
-  tablecontent.innerHTML = ""; // Clear previous content
+  tablecontent.innerHTML = ""; 
 
   if (snapshot.exists()) {
     let bookings = Object.entries(snapshot.val());
@@ -85,15 +97,14 @@ onValue(collectionRef, (snapshot) => {
       tablecontent.appendChild(row);
     });
 
-    // Attach event listeners for delete buttons
+
     document.querySelectorAll(".delete").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         let id = e.target.getAttribute("data-id");
 
-        let confirmDelete = confirm("Are you sure you want to delete this booking?");
-        if (confirmDelete) {
-          remove(ref(db, `zubair/${id}`));
-          alert("Booking deleted successfully!");
+        if (confirm("Are you sure you want to delete this booking?")) {
+          remove(ref(db, `zubair/${id}`))
+            .then(() => alert("Booking deleted successfully!"));
         }
       });
     });
@@ -104,7 +115,6 @@ onValue(collectionRef, (snapshot) => {
         let id = e.target.getAttribute("data-id");
         let booking = bookings.find(([key]) => key === id)[1];
 
-       
         name.value = booking.name;
         phonenumber.value = booking.mobile;
         email.value = booking.email;
@@ -112,22 +122,9 @@ onValue(collectionRef, (snapshot) => {
         checkout.value = booking.checkout;
         rooms.value = booking.rooms;
 
-        // Change button to update
+        editMode = true;
+        editId = id;
         button.innerText = "Update";
-        button.onclick = () => {
-          update(ref(db, `zubair/${id}`), {
-            name: name.value,
-            mobile: phonenumber.value,
-            email: email.value,
-            checkin: checkin.value,
-            checkout: checkout.value,
-            rooms: rooms.value,
-          });
-
-          alert("Booking updated successfully!");
-          button.innerText = "Submit"; // Change button back to submit
-          button.onclick = submitBooking;
-        };
       });
     });
 
